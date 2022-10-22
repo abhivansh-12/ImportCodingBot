@@ -1,0 +1,6 @@
+pyrogram
+tgcrypto
+requests
+deta
+dotenv
+psutil
