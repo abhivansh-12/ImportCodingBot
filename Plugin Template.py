@@ -14,5 +14,5 @@ HELP = F"{preFix}{cmds[0]} - Short info about mycommand" # Provide brief and mea
 command = lambda cmd: filters.command(cmd, prefixes = preFix)
 
 @Client.on_message(command(cmds))
-async def FunctionName_SameAs_FileName(app, msg): # The function name will be myFunc if the file name is myFunc.py
+async def FunctionName_SameAs_FileName(app, msg): # The function name will be myFunc if the file name is myFunc.py, not necessarily but try to stick to this convention
   # Function Body
