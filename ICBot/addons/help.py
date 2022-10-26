@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-
+from importlib import import_module
 
 '''===========EDITABLES==========='''
 
@@ -17,14 +17,12 @@ async def help(_, msg):
   if len(msg.text.split()) == 1:
     return await msg.reply(F"Usage:\n`{HELP}`", quote = 1)
   if len(msg.text.split()) > 1:
-    if msg.text.partition(msg.text.split()[0])[-1].strip().lower() == "help":
+    if msg.text.partition(msg.text.split()[0])[-1].strip().lower() in cmds:
       return await msg.reply(F"Usage:\n`{HELP}`", quote = 1)
     else:
-      TESTHELP = "PlaceHolder"
       testCmd = msg.text.partition(msg.text.split()[0])[-1].strip().lower()
-      test = F"from addons.{testCmd} import HELP as TESTHELP"
       try:
-        exec(test)
-        return await msg.reply(F"Usage:\n`{TESTHELP}`", quote = 1)
+        mod = import_module(F"addons.{testCmd}")
+        return await msg.reply(F"Usage:\n`{mod.HELP}`", quote = 1)
       except Exception as e:
         return await msg.reply(F"Error:\n`{e}`", quote = 1)
