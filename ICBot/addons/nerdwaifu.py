@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import os
 from deta import Deta
 
-
+load_dotenv()
 '''===========EDITABLES==========='''
 
 preFix = "!"
