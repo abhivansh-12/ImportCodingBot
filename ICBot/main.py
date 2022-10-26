@@ -2,6 +2,7 @@ from pyrogram import Client
 from dotenv import load_dotenv
 import os
 
+load_dotenv()
 #----------------------------
 bottoken = os.getenv("BOT_TOKEN")
 apiid = 8
