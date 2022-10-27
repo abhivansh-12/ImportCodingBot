@@ -8,7 +8,7 @@ load_dotenv()
 '''===========EDITABLES==========='''
 
 preFix = "?" # Change this character for a custom command prefix, leave empty to use the master prefix defined in .env, the fallback prefix is  TG's default "/" prefix
-cmds = ["mycmd", F"mycmd{os.getenv("BOT_UNAME")}"] # Change the command list accordingly
+cmds = ["mycmd", F"mycmd{os.getenv('BOT_UNAME')}"] # Change the command list accordingly
 HELP = F"{preFix}{cmds[0]} - Short info about mycommand" # Provide brief and meaningful help information about what the command is for
 
 '''-------------------------------'''
