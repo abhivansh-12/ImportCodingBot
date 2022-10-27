@@ -1,16 +1,20 @@
 from pyrogram import Client, filters
 from importlib import import_module
+from dotenv import load_dotenv
+import os
 
+
+load_dotenv()
 '''===========EDITABLES==========='''
 
 preFix = "!"
 cmds = ["help", "tasukette", "F1"]
-HELP = F"{preFix}{cmds[0]} plugin_name - Displays the help info for the plugin"
+HELP = F"{preFix if preFix else os.getenv('MASTER_PREFIX', '/')}{cmds[0]} plugin_name - Displays the help info for the plugin"
 
 '''-------------------------------'''
 
 
-command = lambda cmd: filters.command(cmd, prefixes = preFix)
+command = lambda cmd: filters.command(cmd, prefixes = preFix if preFix else os.getenv('MASTER_PREFIX', '/'))
 
 @Client.on_message(command(cmds))
 async def help(_, msg):

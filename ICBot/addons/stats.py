@@ -1,16 +1,19 @@
 from pyrogram import Client, filters
+from dotenv import load_dotenv
+import os
 
 
+load_dotenv()
 '''===========EDITABLES==========='''
 
-preFix = "/" # Change this for a custom command prefix
-cmds = ["serverstats"]
-HELP = F"{preFix}{cmds[0]} - displays basic server stats"
+preFix = ""
+cmds = ["serverstats", F"serverstats{os.getenv('BOT_UNAME')}"]
+HELP = F"{preFix if preFix else os.getenv('MASTER_PREFIX', '/')}{cmds[0]} - displays basic server stats"
 
 '''-------------------------------'''
 
 
-command = lambda cmd: filters.command(cmd, prefixes = preFix)
+command = lambda cmd: filters.command(cmd, prefixes = preFix if preFix else os.getenv('MASTER_PREFIX', '/'))
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 def readable_file_size(size_in_bytes) -> str:

@@ -6,14 +6,15 @@ from dotenv import load_dotenv
 import os
 from deta import Deta
 
+
 load_dotenv()
 '''===========EDITABLES==========='''
 
 preFix = "!"
 cmds = ["nerdwaifu"]
 HELP = F"""
-{preFix}{cmds[0]} - sends a random nerd waifu in the chat
-{preFix}{cmds[0]} set - sends and set a random waifu as the chat profile photo if the command was issued by an ADMIN/AUTH User"""
+{preFix if preFix else os.getenv('MASTER_PREFIX', '/')}{cmds[0]} - sends a random nerd waifu in the chat
+{preFix if preFix else os.getenv('MASTER_PREFIX', '/')}{cmds[0]} set - sends and set a random waifu as the chat profile photo if the command was issued by an ADMIN/AUTH User"""
 
 '''-------------------------------'''
 
@@ -33,7 +34,7 @@ AuthUsers Detabase Structure
 }
 '''
 AUTHENTIC = db.get("Authentic").get("users")
-command = lambda cmd: filters.command(cmd, prefixes = preFix)
+command = lambda cmd: filters.command(cmd, prefixes = preFix if preFix else os.getenv('MASTER_PREFIX', '/'))
 APIEndPoint = "https://znerdwaifuz.pythonanywhere.com/"
 
 def delfiles(files_to_del: list):
