@@ -4,3 +4,5 @@ requests
 deta
 dotenv
 psutil
+lxml
+beautifulsoup4
