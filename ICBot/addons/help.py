@@ -29,4 +29,4 @@ async def help(_, msg):
         mod = import_module(F"addons.{testCmd}")
         return await msg.reply(F"Usage:\n`{mod.HELP}`", quote = 1)
       except Exception as e:
-        return await msg.reply(F"Error:\n`{e}`", quote = 1)
+        return await msg.reply(F"ERROR:\n`{e}`", quote = 1)

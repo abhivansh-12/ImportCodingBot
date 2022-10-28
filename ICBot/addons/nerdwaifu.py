@@ -45,14 +45,14 @@ def delfiles(files_to_del: list):
 @Client.on_message(command(cmds))
 async def nerdwaifu(app, msg):
   rep = await msg.reply("Processing...", quote = 1)
+  filePath = 'arbitaryFileWhichDoesntExistYet'
   try:
     with urlopen(APIEndPoint) as response:
-      waifu = json.loads(response.read()).get("waifu")
+      waifu = json.load(response).get("waifu")
       url = waifu.get("file")
       file = urlretrieve(url, F"{os.getcwd()}/{Path(url).stem}{Path(url).suffix}")
       filePath = os.path.abspath(file[0])
-      if len(msg.text.split()) > 1:
-        if msg.text.partition(msg.text.split()[0])[-1].strip().lower() == "set":
+      if (len(msg.text.split()) > 1) and (msg.text.partition(msg.text.split()[0])[-1].strip().lower() == "set"):
           user = await app.get_chat_member(msg.chat.id, msg.from_user.id)
           if ((user.status in [enums.ChatMemberStatus.OWNER, enums.ChatMemberStatus.ADMINISTRATOR]) or (msg.from_user.id in AUTHENTIC)):
             await app.set_chat_photo(msg.chat.id, photo = filePath)
@@ -62,4 +62,5 @@ async def nerdwaifu(app, msg):
       delfiles([filePath])
 
   except Exception as e:
-    await rep.edit(F"Error:\n`{e}`")
+    await rep.edit(F"ERROR:\n`{e}`")
+    delfiles([filePath])
