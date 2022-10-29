@@ -37,3 +37,5 @@ async def gangsta(_, msg):
     origText = msg.text.partition(msg.text.split()[0])[-1].strip()
     return await msg.reply(gangstafy(origText), quote = 1, parse_mode = enums.ParseMode.DISABLED)
   else: return await msg.reply(F"Usage:\n`{HELP}`", quote = 1)
+
+# Inline method defined in inlineQHandler.py
