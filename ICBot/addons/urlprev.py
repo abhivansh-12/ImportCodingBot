@@ -7,7 +7,10 @@ import os
 
 preFix = "/"
 cmds = ["urlprev", F"urlprev{os.getenv('BOT_UNAME')}"]
-HELP = F"""{preFix if preFix else os.getenv('MASTER_PREFIX', '/')}{cmds[0]} Your text ||| URL - generates a message from your text, with the preview of the provided URL embedding it in a leading space character resulting in a clean looking message"""
+HELP = F"""{preFix if preFix else os.getenv('MASTER_PREFIX', '/')}{cmds[0]} Your text ||| URL - generates a message from your text, with the preview of the provided URL embedding it in a leading space character resulting in a clean looking message
+
+Inline Usage:
+{os.getenv('BOT_UNAME')} {cmds[0]} Your text ||| URL"""
 
 '''-------------------------------'''
 
@@ -36,3 +39,5 @@ async def urlprev(_, msg):
           await msg.reply(urlformat.format(uri, txt))
       else: return await msg.reply(F"Usage:\n`{HELP}`", quote = 1)
   else: return await msg.reply(F"Usage:\n`{HELP}`", quote = 1)
+
+# Inline method defined in inlineQHandler.py
