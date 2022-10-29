@@ -46,7 +46,7 @@ async def stickerize(app, msg):
 
     # File names
     fname = F"Stickerize{msg.chat.id}{msg.id}"
-    global dl
+    dl = ""
     pngImg = F"{fname}.png" # PNG File
     resizedImg = F"{fname}_resized.png"
     stickerizedImg = F"{fname}.webp"
@@ -97,7 +97,7 @@ async def stickerize(app, msg):
         else: return await rep.edit('`ERROR: Failed to upload the file!\nYou might retry!`')
       
       except Exception as e:
-        filesToDel+=[dl if dl else ""]
+        filesToDel+=[dl]
         delfiles(filesToDel)
         return await rep.edit(F"ERROR:\n`{e}`")
         
