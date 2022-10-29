@@ -27,7 +27,7 @@ async def pngwebp(app, msg):
     origMsg = msg.reply_to_message
 
     # File names
-    global dl
+    dl = ""
     if msg.text.split()[0][1:] in cmds[0:2]:
       imgExtension = "png"
     if msg.text.split()[0][1:] in cmds[2:4]:
@@ -62,12 +62,12 @@ async def pngwebp(app, msg):
             await msg.reply_photo(photo = convertedImg, quote = 1)
           await msg.reply_document(document = convertedImg, quote = 1, force_document = 1)
           await rep.delete()
-          delfiles([dl if dl else "", convertedImg])
+          delfiles([dl, convertedImg])
           
         else: return await rep.edit('`ERROR: Failed to upload the file!\nYou might retry!`')
       
       except Exception as e:
-        delfiles([dl if dl else "", convertedImg])
+        delfiles([dl, convertedImg])
         return await rep.edit(F"ERROR:\n`{e}`")
 
     else: return await msg.reply('`ERROR: No image found in the message!`', quote = 1)
