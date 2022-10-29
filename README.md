@@ -7,6 +7,7 @@ It uses the MASTER_PREFIX "/" for all the commands.
 ## Contribution Guidelines
 - You simply need to copy the `Plugin Template.py` file, paste it in the `ICBot/addons/` directory and make your changes in that file. 
 - Make sure to read the template file carefully and keep in mind the conventions mentioned in there while making your changes, finally rename the file following the naming convention.
+- For handling any inline queries, edit the `ICBot/addons/inlineQHandler.py` file.
 - Make a PR and wait for it to get approved!
 
 Python and Pyrogram are the only pre-requisites, try contributing some interesting and original plugins :)
