@@ -91,7 +91,7 @@ async def stickerize(app, msg):
           # Send sticker and perform cleanup
           await msg.reply_sticker(sticker = stickerizedImg, quote = 1)
           await rep.delete()
-          filesToDel+=[dl if dl else ""]
+          filesToDel+=[dl]
           delfiles(filesToDel)
           
         else: return await rep.edit('`ERROR: Failed to upload the file!\nYou might retry!`')
