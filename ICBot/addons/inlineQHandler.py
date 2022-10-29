@@ -5,7 +5,7 @@ from addons.gangsta import gangstafy
 
 '''===========EDITABLES==========='''
 
-queries = ["gangsta"] # Append any more inline query prefixes here
+queries = ["gangsta", "uf"] # Append any more inline query prefixes here
 
 '''-------------------------------'''
 
@@ -26,7 +26,19 @@ async def inlineQHandler(_, queryObj):
         input_message_content=InputTextMessageContent(gText, parse_mode=enums.ParseMode.DISABLED)
       )
     )
-  
+
+  # uf
+  if query.split()[0]==queries[1]:
+    text = query.split(maxsplit=1)[1]
+    disablePrev=text.endswith("~")
+    if disablePrev:text=text[:-1]
+    results.append(
+      InlineQueryResultArticle(
+        title="Send unformatted text",
+        input_message_content=InputTextMessageContent(text, parse_mode=enums.ParseMode.DISABLED, disable_web_page_preview=disablePrev)
+      )
+    )
+
   # new_query
   # if query.split()[0]==queries[Index_Of_Your_Query]:
   #   results.append(Results_of_the_query)
