@@ -6,3 +6,4 @@ dotenv
 psutil
 lxml
 beautifulsoup4
+Pillow
